@@ -8,6 +8,7 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
     And The api user sets "api/coupon/couponList" path parameters.
     And The api user sends a GET request and saves the returned response.
     Then The api user verifies that the status code is 200.
+    Then The api user verifies that the "message" information in the response body is "success".
 
 
 
