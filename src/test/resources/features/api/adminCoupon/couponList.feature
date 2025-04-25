@@ -7,7 +7,7 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
     Given The api user constructs the base url with the "admin" token.
     And The api user sets "api/coupon/couponList" path parameters.
     And The api user sends a GET request and saves the returned response.
-
+    Then The api user verifies that the status code is 200.
 
 
 
