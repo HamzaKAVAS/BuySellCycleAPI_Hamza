@@ -4,6 +4,7 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
   the returned status code should be 200, the message information should be "success",
   and the id(x) information (title, coupon_code, start_date, end_date) in the response body should be verified.
 
+    Given The api user constructs the base url with the "admin" token.
 
 
 
