@@ -9,7 +9,8 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
     And The api user sends a GET request and saves the returned response.
     Then The api user verifies that the status code is 200.
     Then The api user verifies that the "message" information in the response body is "success".
-    Then The api user verifies the information in the response body for the entry with the specified <id> id, including "<title>","<coupon_code>","<start_date>" ve "<end_date>".
+    Then The api user verifies the information in the response body for the entry with the specified "<id>" id, including "<title>","<coupon_code>","<start_date>" ve "<end_date>".
 
     Examples:
-      |  |
+      | id   | title         | coupon_code | start_date | end_date   |
+      | 226  | April Sale    | OFF10AP     | 2025-04-04 | 2025-04-30 |

@@ -17,7 +17,8 @@ public class US27_28_29_30_31_Stepdefinitions {
     JSONObject jsonObject;
     HashMap requestBody;
 
-    @Then("The api user verifies the information in the response body for the entry with the specified <id> id, including {string},{string},{string} ve {string}.")
-    public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIdIncludingVe(String arg0, String arg1, String arg2, String arg3) {
+
+    @Then("The api user verifies the information in the response body for the entry with the specified {string} id, including {string},{string},{string} ve {string}.")
+    public void theApiUserVerifiesTheInformationInTheResponseBodyForTheEntryWithTheSpecifiedIdIncludingVe(String arg0, String arg1, String arg2, String arg3, String arg4) {
     }
 }
