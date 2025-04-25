@@ -1,0 +1,1 @@
+Feature: [API_US027] As an administrator I would like to be able to access coupon information via an API connection.
