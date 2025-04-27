@@ -20,3 +20,4 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
   returned is 401 and the message is “Unauthenticated.”.
 
     Given The api user constructs the base url with the "invalid" token.
+    And The api user sets "api/coupon/couponList" path parameters.
