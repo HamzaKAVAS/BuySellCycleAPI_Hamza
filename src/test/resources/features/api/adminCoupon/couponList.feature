@@ -19,3 +19,4 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
   the /api/coupon/couponList endpoint, it should be verified that the status code
   returned is 401 and the message is “Unauthenticated.”.
 
+    Given The api user constructs the base url with the "invalid" token.
