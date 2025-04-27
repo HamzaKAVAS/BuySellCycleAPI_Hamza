@@ -1,0 +1,1 @@
+Feature: [API_US028] As an administrator, I want to access the coupon details with the specified id number via API connection.
