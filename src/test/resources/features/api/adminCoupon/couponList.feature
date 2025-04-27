@@ -14,3 +14,8 @@ Feature: [API_US027] As an administrator I would like to be able to access coupo
     Examples:
       | id   | title         | coupon_code | start_date | end_date   |
       | 226  | April Sale    | OFF10AP     | 2025-04-04 | 2025-04-30 |
+
+  Scenario: [API_US027 => TC_02] When a GET request with invalid authorization information is sent to
+  the /api/coupon/couponList endpoint, it should be verified that the status code
+  returned is 401 and the message is “Unauthenticated.”.
+
