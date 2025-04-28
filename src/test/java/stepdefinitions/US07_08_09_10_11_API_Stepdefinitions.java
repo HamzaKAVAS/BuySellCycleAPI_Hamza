@@ -54,7 +54,8 @@ public class US07_08_09_10_11_API_Stepdefinitions {
 
     @Given("The api user verifies the information in the response body for the entry with the specified {int} index, including {string} and {string}.")
     public void the_api_user_verifies_the_information_in_the_response_body_for_the_entry_with_the_specified_index_including_and(int index, String year, String name) {
-
+        API_Methods.assertBody("holiday[" + index + "].year", year);
+        API_Methods.assertBody("holiday[" + index + "].name", name);
 
     }
 
@@ -145,62 +146,118 @@ public class US07_08_09_10_11_API_Stepdefinitions {
 
     @Given("The api user prepares a patch request body to send to the api holidayUpdate endpoint.")
     public void the_api_user_prepares_a_patch_request_body_to_send_to_the_api_holiday_update_endpoint() {
+        requestBody=testDataOguz.holidayUptade();
+
 
     }
 
     @Given("The api user sends a PATCH request and saves the returned response.")
     public void the_api_user_sends_a_patch_request_and_saves_the_returned_response() {
+        API_Methods.sendRequest("PATCH",requestBody);
 
     }
 
-    @Given("The api user verifies that the updated id information in the response body is the same as the id path parameter written in the endpoint.")
-    public void the_api_user_verifies_that_the_updated_id_information_in_the_response_body_is_the_same_as_the_id_path_parameter_written_in_the_endpoint() {
 
+    @Given("The api user verifies that the updated id information in the response body is the same as the <{int}> path parameter written in the endpoint.")
+    public void the_api_user_verifies_that_the_updated_id_information_in_the_response_body_is_the_same_as_the_path_parameter_written_in_the_endpoint(int id) {
+
+        API_Methods.assertBody("updated_Id",id);
     }
+
 
     @Given("The api user prepares a patch request body that matches previous records to send to the api holidayUpdate endpoint.")
     public void the_api_user_prepares_a_patch_request_body_that_matches_previous_records_to_send_to_the_api_holiday_update_endpoint() {
+
+        requestBody=testDataOguz.holidayUptadeAyniVeriGonderme();
 
     }
 
     @Given("The api user sends a PATCH request, saves the returned response, and verifies that the status code is {string} with the reason phrase Bad Request.")
     public void the_api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_bad_request(String string) {
 
+        try {
+            API_Methods.sendRequest("PATCH",requestBody);
+            API_Methods.statusCodeAssert(404);
+            API_Methods.assertBody("message","dublicate holiday request");
+        } catch (Exception e) {
+            exceptionMesaj=e.getMessage();
+        }
+        System.out.println("ExceptionsMesaj :" + exceptionMesaj);
+        Assert.assertEquals(configLoader.getApiConfig("badRequestExceptionMessage"),exceptionMesaj);
     }
 
     @Given("The api user sends a PATCH request, saves the returned response, and verifies that the status code is {string} with the reason phrase Not Found.")
     public void the_api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_not_found(String string) {
 
+
+        try {
+            API_Methods.sendRequest("PATCH",requestBody);
+            API_Methods.statusCodeAssert(404);
+        } catch (Exception e) {
+            exceptionMesaj=e.getMessage();
+        }
+        System.out.println("ExceptionsMesaj :" + exceptionMesaj);
+        Assert.assertEquals(configLoader.getApiConfig("notFoundExceptionMessage"),exceptionMesaj);
     }
 
     @Given("The api user sends a PATCH request, saves the returned response, and verifies that the status code is {string} with the reason phrase Unauthorized.")
     public void the_api_user_sends_a_patch_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_unauthorized(String string) {
 
+        try {
+            API_Methods.sendRequest("PATCH",requestBody);
+            API_Methods.statusCodeAssert(401);
+        } catch (Exception e) {
+            exceptionMesaj=e.getMessage();
+        }
+        System.out.println("ExceptionsMesaj :" + exceptionMesaj);
+        Assert.assertEquals(configLoader.getApiConfig("unauthorizedExceptionMessage"),exceptionMesaj);
     }
 
 
     @Given("The api user name verifies that it is {string}")
     public void the_api_user_name_verifies_that_it_is(String name) {
+        API_Methods.assertBody("holidayDetails[0].name",name);
 
     }
 
-    @Given("The api user prepares a Delete request body to send to the api holidayDelete endpoint.")
-    public void the_api_user_prepares_a_delete_request_body_to_send_to_the_api_holiday_delete_endpoint() {
+    @Given("The api user prepares a Delete request body <{int}> to send to the api holidayDelete endpoint.")
+    public void the_api_user_prepares_a_delete_request_body_to_send_to_the_api_holiday_delete_endpoint(int id) {
+        requestBody=testDataOguz.delete(id);
+
 
     }
 
     @Given("The api user sends a DELETE request and saves the returned response.")
     public void the_api_user_sends_a_delete_request_and_saves_the_returned_response() {
 
+        API_Methods.tryCatchRequest("DELETE",requestBody);
+
     }
 
-    @Given("The api user verifies that the Deleted id information in the response body is the same as the id information in the request body.")
-    public void the_api_user_verifies_that_the_deleted_id_information_in_the_response_body_is_the_same_as_the_id_information_in_the_request_body() {
+    @Given("The api user verifies that the Deleted <{int}> information in the response body is the same as the id information in the request body.")
+    public void the_api_user_verifies_that_the_deleted_information_in_the_response_body_is_the_same_as_the_id_information_in_the_request_body(int id) {
 
+
+        API_Methods.assertBody("Deleted_Id",id);
     }
 
     @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is {string} with the reason phrase Unauthorized.")
     public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_unauthorized(String string) {
+
+    }
+
+    @Given("The api user prepares a delete request that does not contain any data to the api holidayDelete endpoint.")
+    public void the_api_user_prepares_a_delete_request_that_does_not_contain_any_data_to_the_api_holiday_delete_endpoint() {
+
+        requestBody=testDataOguz.deleteNoData();
+        System.out.println("Request Body : " + requestBody);
+    }
+
+    @Given("The api user sends a DELETE request, saves the returned response, and verifies that the status code is <{int}> with the reason phrase Unprocessable Entity.")
+    public void the_api_user_sends_a_delete_request_saves_the_returned_response_and_verifies_that_the_status_code_is_with_the_reason_phrase_unprocessable_entity(int code) {
+
+        API_Methods.tryCatchRequest("DELETE",requestBody);
+        API_Methods.statusCodeAssert(code);
 
     }
 
