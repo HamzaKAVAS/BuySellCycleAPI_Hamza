@@ -16,12 +16,14 @@ Feature: [API_US028] As an administrator, I want to access the coupon details wi
       | 226 | 226 | April Sale | OFF10AP     | 2           | 2025-04-04 | 2025-04-30 | 10       | 0             | 200              | null             | 1          | null       | 0         | 1               | 5                  | 2025-04-04T11:27:55.000000Z | 2025-04-04T11:27:55.000000Z |
 
   Scenario: [API_US028 => TC_02] When a GET request with valid authorization information and no data (coupon id) is sent to the /api/coupon/couponDetails endpoint, it should be verified that the returned status code is 404 and the message information in the response body is "coupon not found".
+
     Given The api user constructs the base url with the "admin" token.
     And The api user sets "api/coupon/couponDetails " path parameters.
     And The api user prepares a GET request that does not contain data to the api couponDetails endpoint.
     Then The api user sends a GET request, saves the returned response, and verifies that the status code is 404 with the reason phrase Not Found.
 
   Scenario Outline: [API_US028 => TC_03] When a GET body containing an incorrect (non-existent) coupon id is sent, it should be verified that the returned status code is 404 and the message information in the response body is "coupon not found".
+
     Given The api user constructs the base url with the "admin" token.
     And The api user sets "api/coupon/couponDetails" path parameters.
     And The api user prepares a GET request body to send to the api couponDetails endpoint containing the information <id>.
@@ -32,6 +34,7 @@ Feature: [API_US028] As an administrator, I want to access the coupon details wi
       | 9568 |
 
   Scenario Outline: [API_US028 => TC_04] When a GET request body is sent to the /api/coupon/couponDetails endpoint with invalid authorization information and the coupon id whose details are to be accessed, it should be verified that the status code returned is 401 and the message information is “Unauthenticated.”.
+
     Given The api user constructs the base url with the "invalid" token.
     And The api user sets "api/coupon/couponDetails" path parameters.
     And The api user prepares a GET request body to send to the api couponDetails endpoint containing the information <id>.

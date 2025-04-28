@@ -63,4 +63,10 @@ public class US27_28_29_30_31_Stepdefinitions {
         requestBody = testDataHamza.getBodyUS28(id);
         System.out.println("Get Body " + requestBody);
     }
+
+    @And("The api user prepares a post request body to send to the api couponAdd endpoint.")
+    public void theApiUserPreparesAPostRequestBodyToSendToTheApiCouponAddEndpoint() {
+        requestBody = testDataHamza.couponAdd();
+        System.out.println("Post Body :" + requestBody);
+    }
 }
