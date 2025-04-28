@@ -18,3 +18,16 @@ Feature: [API_US029] As an administrator I would like to be able to create a new
     Then The api user verifies that the status code is 401.
     Then The api user verifies that the "message" information in the response body is "Unauthenticated.".
 
+  Scenario Outline: [API_US029 => TC_03] The API must verify that the new coupon record to be created through the API has been created. (With the added_item_id returned in the response body, the record creation can be verified by sending a GET body to the /api/coupon/couponDetails endpoint.)
+
+    Given The api user constructs the base url with the "admin" token.
+    And The api user sets "api/coupon/couponAdd " path parameters.
+    And The api user prepares a GET request body to send to the api couponDetails endpoint containing the information <id>.
+    And The api user sends a GET request body and saves the returned response.
+    Then The api user verifies that the status code is 200.
+
+    Examples:
+      | id  |
+      | 254 |
+
+
