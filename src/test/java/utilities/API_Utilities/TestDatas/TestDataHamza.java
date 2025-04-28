@@ -10,4 +10,10 @@ public class TestDataHamza {
         requestBody.put("id", id);
         return requestBody;
     }
+
+    public HashMap getBodyUS28_Wrong() {
+        requestBody = new HashMap<>();
+        requestBody.put("id", 169);
+        return requestBody;
+    }
 }

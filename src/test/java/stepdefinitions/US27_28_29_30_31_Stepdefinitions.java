@@ -58,4 +58,9 @@ public class US27_28_29_30_31_Stepdefinitions {
         API_Methods.assertBody("couponDetails[0].updated_at", updated_at);
     }
 
+    @And("The api user prepares a GET request that does not contain data to the api couponDetails endpoint.")
+    public void theApiUserPreparesAGETRequestThatDoesNotContainDataToTheApiCouponDetailsEndpoint() {
+        requestBody = testDataHamza.getBodyUS28_Wrong();
+        System.out.println("Get Body :" + requestBody);
+    }
 }
