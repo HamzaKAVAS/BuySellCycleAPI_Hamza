@@ -31,4 +31,15 @@ Feature: [API_US028] As an administrator, I want to access the coupon details wi
       | id   |
       | 9568 |
 
+  Scenario Outline: [API_US028 => TC_04] When a GET request body is sent to the /api/coupon/couponDetails endpoint with invalid authorization information and the coupon id whose details are to be accessed, it should be verified that the status code returned is 401 and the message information is “Unauthenticated.”.
+    Given The api user constructs the base url with the "invalid" token.
+    And The api user sets "api/coupon/couponDetails" path parameters.
+    And The api user prepares a GET request body to send to the api couponDetails endpoint containing the information <id>.
+    Then The api user sends a GET request body, saves the returned response, and verifies that the status code is '401' with the reason phrase Unauthorized.
+
+    Examples:
+      | id |
+      | 3  |
+
+
 
