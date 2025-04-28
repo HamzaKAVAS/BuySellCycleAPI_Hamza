@@ -9,7 +9,8 @@ Feature: [API_US028] As an administrator, I want to access the coupon details wi
     And The api user sends a GET request body and saves the returned response.
     Then The api user verifies that the status code is 200.
     Then The api user verifies that the "message" information in the response body is "success".
-    Then The api user validates the contents of the couponDetails data <id>, "<title>", "<coupon_code>", <coupon_type>,"<start_date>","<end_date>","<discount>","<discount_type>","<minimum_shopping>","<maximum_discount>","<created_by>","<updated_by>","<is_expire>","<is_multiple_buy>","<multiple_buy_limit>","<created_at>" and "<updated_at>" in the response body.
+    Then The api user validates the contents of the couponDetails data <id>, "<title>", "<coupon_code>", <coupon_type>,"<start_date>","<end_date>",<discount>,<discount_type>,<minimum_shopping>,"<maximum_discount>",<created_by>,"<updated_by>",<is_expire>,<is_multiple_buy>,"<multiple_buy_limit>","<created_at>" and "<updated_at>" in the response body.
 
     Examples:
-      |  |
+      | id  | id  | title      | coupon_code | coupon_type | start_date | end_date   | discount | discount_type | minimum_shopping | maximum_discount | created_by | updated_by | is_expire | is_multiple_buy | multiple_buy_limit | created_at                  | updated_at                  |
+      | 226 | 226 | April Sale | OFF10AP     | 2           | 2025-04-04 | 2025-04-30 | 10       | 0             | 200              | null             | 1          | null       | 0         | 1               | 5                  | 2025-04-04T11:27:55.000000Z | 2025-04-04T11:27:55.000000Z |
