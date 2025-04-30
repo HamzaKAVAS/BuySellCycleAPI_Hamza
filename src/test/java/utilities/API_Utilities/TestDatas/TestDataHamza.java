@@ -39,8 +39,16 @@ public class TestDataHamza {
         requestBody = new HashMap<>();
         Faker faker = new Faker();
         requestBody.put("title", "Team148");
-        requestBody.put("coupon_code", "Geometri");
+        requestBody.put("coupon_code", "Geo");
         requestBody.put("start_date", faker.date().birthday());
+        return requestBody;
+    }
+
+    public HashMap couponUptadeAyniVeriGonderme() {
+        requestBody = new HashMap<>();
+        requestBody.put("title", "Team");
+        requestBody.put("coupon_code", "Geo");
+        requestBody.put("start_date", "2024-04-23");
         return requestBody;
     }
 }

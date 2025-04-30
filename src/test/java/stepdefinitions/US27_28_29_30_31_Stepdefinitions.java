@@ -74,4 +74,9 @@ public class US27_28_29_30_31_Stepdefinitions {
     public void theApiUserPreparesAPatchRequestBodyToSendToTheApiCouponUpdateEndpoint() {
         requestBody=testDataHamza.couponUptade();
     }
+
+    @And("The api user prepares a patch request body that matches previous records to send to the api couponUpdate endpoint.")
+    public void theApiUserPreparesAPatchRequestBodyThatMatchesPreviousRecordsToSendToTheApiCouponUpdateEndpoint() {
+        requestBody=testDataHamza.couponUptadeAyniVeriGonderme();
+    }
 }
