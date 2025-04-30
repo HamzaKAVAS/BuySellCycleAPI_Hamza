@@ -21,7 +21,6 @@ public class TestDataHamza {
 
     public HashMap couponAdd() {
         requestBody = new HashMap<>();
-        Faker faker = new Faker();
         requestBody.put("title", "Merhaba");
         requestBody.put("coupon_code", "Herkese Selam");
         requestBody.put("coupon_type", 3);
@@ -33,6 +32,15 @@ public class TestDataHamza {
         requestBody.put("maximum_discount", null);
         requestBody.put("is_expire", 0);
         requestBody.put("is_multiple_buy", 2);
+        return requestBody;
+    }
+
+    public HashMap couponUptade() {
+        requestBody = new HashMap<>();
+        Faker faker = new Faker();
+        requestBody.put("title", "Team148");
+        requestBody.put("coupon_code", "Geometri");
+        requestBody.put("start_date", faker.date().birthday());
         return requestBody;
     }
 }

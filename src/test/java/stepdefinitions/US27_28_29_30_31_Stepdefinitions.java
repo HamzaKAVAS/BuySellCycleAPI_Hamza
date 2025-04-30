@@ -69,4 +69,9 @@ public class US27_28_29_30_31_Stepdefinitions {
         requestBody = testDataHamza.couponAdd();
         System.out.println("Post Body :" + requestBody);
     }
+
+    @And("The api user prepares a patch request body to send to the api couponUpdate endpoint.")
+    public void theApiUserPreparesAPatchRequestBodyToSendToTheApiCouponUpdateEndpoint() {
+        requestBody=testDataHamza.couponUptade();
+    }
 }
