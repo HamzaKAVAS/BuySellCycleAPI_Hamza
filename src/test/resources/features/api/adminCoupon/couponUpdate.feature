@@ -35,11 +35,21 @@ Feature: [API_US030] As an administrator, I want to be able to update coupon inf
   the status code returned is 401 and the message in the response body is “Unauthenticated. “ should be verified.
 
     Given The api user constructs the base url with the "invalid" token.
-    And The api user sets "api/holidayUpdate/229" path parameters.
+    And The api user sets "api/couponUpdate/229" path parameters.
     And The api user prepares a patch request body to send to the api couponUpdate endpoint.
     Then The api user sends a PATCH request, saves the returned response, and verifies that the status code is '401' with the reason phrase Unauthorized.
 
+  Scenario Outline: [API_US030 => TC_05] It should be verified via the API that the coupon record to be updated has been successfully updated.
 
+    Given The api user constructs the base url with the "admin" token.
+    And The api user sets "api/couponDetails" path parameters.
+    And The api user prepares a GET request body to send to the api couponDetails endpoint containing the information <id>.
+    And The api user sends a GET request body and saves the returned response.
+    Then The api user name verifies that it is "Geo"
+
+    Examples:
+      | id  |
+      | 230 |
 
 
 
