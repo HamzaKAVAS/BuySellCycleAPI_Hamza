@@ -1,0 +1,1 @@
+Feature: Verify the name value of a categorie with 'slug = fashion' in the Categories table.
